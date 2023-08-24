@@ -44,8 +44,10 @@ class QuestionSolver:
         logger.debug("ChatGPT response:\n" + str(response))
 
         try:
+            print(response)
             result = json.loads(response)
             logger.debug("Parsed result:\n" + str(result))
+            print(response)
         except Exception:
             raise ValueError(
                 "ChatGPT's response is in wrong format, please try again or adjust the prompt.\n\n" + response + "\n\n"

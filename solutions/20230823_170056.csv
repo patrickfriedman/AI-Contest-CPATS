@@ -1,0 +1,19 @@
+Question file,Solution code,ChatGPT thought
+question.txt,"def grading_system(marks):
+    avg_marks = sum(marks)/len(marks)
+    min_marks = min(marks)
+    max_marks = max(marks)
+    grade_list = []
+    for mark in marks:
+        if mark >= avg_marks+10:
+            grade_list.append('A')
+        elif mark >= avg_marks+5:
+            grade_list.append('B')
+        elif mark >= avg_marks-5:
+            grade_list.append('C')
+        else:
+            grade_list.append('D')
+    grades = {}
+    for i in range(len(marks)):
+        grades['Student '+str(i+1)] = grade_list[i]
+    return grades","To create a grading system function, we need to take input as a list of marks obtained by the students. Then, we need to calculate the average marks, minimum marks, and maximum marks. Based on these values, we can assign grades to the students. We can use if-else statements to assign grades based on the marks obtained. Finally, we can return a dictionary containing the student's name and their corresponding grade."

@@ -4,4 +4,6 @@ The solution code should primarily contain only Python 3 built-in libraries.
 Here is the programming requirement you need to solve:
 {program_requirement}
 ----------- program_requirement end -----------
+{with_similar_solution}
+----------- with_similar_solution end -----------
 You should output a JSON string that includes the fields 'thought' and 'solution_code' (python3), and they should both be of string type. Stop after showing the solution code.

@@ -16,7 +16,7 @@ class QuestionSolver:
             question_solver_prompt = file.read()
         self.prompt_template = question_solver_prompt
 
-    def solve(self, program_requirement: str) -> dict:
+    def solve(self, program_requirement: str, similar_solution: dict) -> dict:
         """
         This function accepts a programming requirement as an input, and uses a chatbot to generate a solution.
         The solution is then parsed and returned in a dictionary format.
@@ -34,10 +34,22 @@ class QuestionSolver:
 
         """
         prompt = PromptTemplate(
-            template=self.prompt_template, input_variables=["program_requirement"],
+            template=self.prompt_template, input_variables=["program_requirement", "with_similar_solution"],
         )
-        input = prompt.format_prompt(program_requirement=program_requirement)
-        logger.debug("Input prompt\n" + input.to_string())
+
+        if similar_solution['add_this_to_prompt'] == True:
+            with_similar_solution = f"""
+            Here is a similar instruction prompt and code snippet that is similar to the programming 
+            Instruction: {similar_solution['instruction']}
+            Input: {similar_solution['input']}
+            Output: {similar_solution['output']}
+            """      
+        else:
+            with_similar_solution = ""
+
+        input = prompt.format_prompt(program_requirement=program_requirement, with_similar_solution=with_similar_solution)
+        print(input.to_string())
+        logger.debug("Input prompt\n" + input.to_string())  
 
         messages = [HumanMessage(content=input.to_string())]
         response = self.chatbot(messages).content

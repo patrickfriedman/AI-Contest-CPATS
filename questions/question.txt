@@ -1,1 +1,1 @@
-write a function that acts as a grading system.
+write a function that outputs these two strings Goodbye and World

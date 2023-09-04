@@ -1,0 +1,12 @@
+[    
+    {    
+        "instruction": "Create a function to calculate the sum of a sequence of integers.",    
+        "input": "[1, 2, 3, 4, 5]",    
+        "output": "# Python code\ndef sum_sequence(sequence):\n  sum = 0\n  for num in sequence:\n    sum += num\n  return sum"    
+    },    
+    {    
+        "instruction": "Develop a function that will add two strings",    
+        "input": "str1 = \"Hello \"\nstr2 = \"world\"",    
+        "output": "def add_strings(str1, str2):\n    \"\"\"This function takes two strings and returns the sum of them.\"\"\"\n    return str1 + str2\n\nstr1 = \"Hello \"\nstr2 = \"world\"\nsum_of_strings = add_strings(str1, str2)"    
+    }    
+]

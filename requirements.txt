@@ -3,3 +3,9 @@ pandas==1.4.2
 tqdm==4.65.0
 openai
 python-dotenv
+tiktoken
+num2words
+matplotlib
+plotly
+scipy 
+scikit-learn

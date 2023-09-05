@@ -1,2 +1,2 @@
-def output_strings():
-    return 'Goodbye', 'World'
+def combine_strings(string1, string2):
+    return string1 + string2

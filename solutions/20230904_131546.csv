@@ -1,0 +1,17 @@
+Question file,Solution code,ChatGPT thought
+question.txt,"def get_grade(score):
+    if score >= 90:
+        return 'A'
+    elif score >= 80:
+        return 'B'
+    elif score >= 70:
+        return 'C'
+    elif score >= 60:
+        return 'D'
+    else:
+        return 'F'
+
+# Example usage
+score = 85
+grade = get_grade(score)
+print('Grade:', grade)","To create a grading system, we can define a function that takes a score as input and returns the corresponding grade based on a set of predefined criteria. We can use if-elif statements to check the score against different ranges and assign the appropriate grade. The function can then return the grade as a string."

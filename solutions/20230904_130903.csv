@@ -1,0 +1,23 @@
+Question file,Solution code,ChatGPT thought
+question.txt,"import json
+
+def grade_students(scores):
+    grading_scale = {
+        'A': range(90, 101),
+        'B': range(80, 90),
+        'C': range(70, 80),
+        'D': range(60, 70),
+        'F': range(0, 60)
+    }
+    grades = {}
+    for student, score in scores.items():
+        for grade, grade_range in grading_scale.items():
+            if score in grade_range:
+                grades[student] = grade
+                break
+    return json.dumps(grades)
+
+# Example usage:
+scores = {'Alice': 85, 'Bob': 92, 'Charlie': 78, 'David': 65}
+json_string = grade_students(scores)
+print(json_string)","To create a grading system, we can define a function that takes a list of student scores as input and calculates their grades based on a predefined grading scale. The function can then return a dictionary containing the student's name and their corresponding grade. We can use the following grading scale: 90-100: A, 80-89: B, 70-79: C, 60-69: D, below 60: F. The function can iterate over the list of scores and use if-elif-else statements to determine the grade for each score. Finally, we can convert the dictionary to a JSON string using the json module."

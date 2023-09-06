@@ -12,7 +12,7 @@ from utils.common_utils import (extract_folder_and_name_from_path,
                                 read_files_from_directory)
 from utils.log import logger
 from utils.question_solver import QuestionSolver
-from utils.data import vectorize_data, search_dataset
+from utils.data import search_dataset
 
 # Load .env file
 load_dotenv()
@@ -25,7 +25,7 @@ solution_folder, solution_filename = extract_folder_and_name_from_path(
     "Solution_FILE", "./solutions/solution.py"
 )
 data_folder, data_filename = extract_folder_and_name_from_path(
-    "Data_FILE", "./data/data.json"
+    "Data_FILE", "./data/data.csv"
 )
 
 parser = argparse.ArgumentParser(
@@ -58,10 +58,6 @@ if __name__ == "__main__":
     # Initialize an empty DataFrame with the columns 'Question file', 'code' and 'ChatGPT_thought'
     df = pd.DataFrame(columns=["Question file", "Solution code", "ChatGPT thought"])
 
-    # Vectorize current dataset
-    data_filepath = os.path.join(os.getcwd(), os.path.join(f"{data_folder}", f"{data_filename}"))
-    additional_df = vectorize_data(data_filepath)
-
     try:
         # Get vectorized data for prompt enrichment
         questions = read_files_from_directory(args.question_path)
@@ -71,11 +67,13 @@ if __name__ == "__main__":
                 " one question.txt present, which is root/questions/question.txt, but now we've detected multiple!"
             )
 
+        data_filepath = os.path.join(os.getcwd(), os.path.join(f"{data_folder}", f"{data_filename}"))
+
         for q in tqdm(questions):
             solver = QuestionSolver()
             # Search dataset for most similar data with question
 
-            similar_df = search_dataset(additional_df, q[1])
+            similar_df = search_dataset(data_filepath, q[1])
 
             similar_dict = {
                 "add_this_to_prompt": False,

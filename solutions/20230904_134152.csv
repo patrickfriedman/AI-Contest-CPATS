@@ -1,0 +1,25 @@
+Question file,Solution code,ChatGPT thought
+question.txt,"import json
+
+
+def grading_system(score):
+    if score >= 90:
+        return 'A'
+    elif score >= 80:
+        return 'B'
+    elif score >= 70:
+        return 'C'
+    elif score >= 60:
+        return 'D'
+    else:
+        return 'F'
+
+
+grades = {
+    'John': grading_system(85),
+    'Alice': grading_system(92),
+    'Bob': grading_system(73)
+}
+
+json_string = json.dumps(grades)
+print(json_string)","To create a grading system, we can define a function that takes a student's score as input and returns their corresponding grade. We can use if-elif-else statements to determine the grade based on the score range. Finally, we can create a dictionary to store the scores and their corresponding grades, and convert it to a JSON string using the json module."

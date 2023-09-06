@@ -1,0 +1,18 @@
+Question file,Solution code,ChatGPT thought
+question.txt,"import json
+
+def grade_system(scores):
+    average = sum(scores) / len(scores)
+    highest = max(scores)
+    lowest = min(scores)
+    result = {
+        'average': average,
+        'highest': highest,
+        'lowest': lowest,
+        'scores': scores
+    }
+    return json.dumps(result)
+
+# Example usage:
+scores = [80, 90, 95, 87, 92]
+print(grade_system(scores))","To create a grading system, we can define a function that takes a list of student scores as input. We can then calculate the average score, highest score, and lowest score using built-in functions such as sum(), max(), and min(). Finally, we can return these values along with the original list of scores as a JSON string using the json module."

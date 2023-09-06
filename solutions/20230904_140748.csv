@@ -1,0 +1,3 @@
+Question file,Solution code,ChatGPT thought
+question.txt,"print('Goodbye')
+print('World')","To output the strings 'Goodbye' and 'World', we can simply use the print() function in Python."

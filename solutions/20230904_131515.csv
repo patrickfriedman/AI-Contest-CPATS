@@ -1,0 +1,19 @@
+Question file,Solution code,ChatGPT thought
+question.txt,"def grade_students(scores):
+    grades = {}
+    for score in scores:
+        if score >= 90:
+            grades[score] = 'A'
+        elif score >= 80:
+            grades[score] = 'B'
+        elif score >= 70:
+            grades[score] = 'C'
+        elif score >= 60:
+            grades[score] = 'D'
+        else:
+            grades[score] = 'F'
+    return grades
+
+# Example usage:
+scores = [78, 92, 85, 60, 75]
+print(grade_students(scores))","To create a grading system, we can take the scores of the students as input and use a set of conditions to assign grades based on the score range. We can define the grade ranges and corresponding grade letters as per the requirement. Lastly, we can return the grades in a dictionary format."

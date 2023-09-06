@@ -1,0 +1,23 @@
+Question file,Solution code,ChatGPT thought
+question.txt,"def grade_system(scores):
+    average_score = sum(scores) / len(scores)
+    minimum_score = min(scores)
+    maximum_score = max(scores)
+    grade_dict = {}
+    for score in scores:
+        if score >= 90:
+            grade_dict[score] = 'A'
+        elif score >= 80:
+            grade_dict[score] = 'B'
+        elif score >= 70:
+            grade_dict[score] = 'C'
+        elif score >= 60:
+            grade_dict[score] = 'D'
+        else:
+            grade_dict[score] = 'F'
+    return {
+        'average_score': average_score,
+        'minimum_score': minimum_score,
+        'maximum_score': maximum_score,
+        'grades': grade_dict
+    }","To create a grading system, we can define a function that takes a list of scores as input and returns a dictionary containing the average score, minimum score, maximum score, and the grade for each score. We can calculate the average score by summing up all the scores and dividing by the total number of scores. To find the minimum and maximum scores, we can use the built-in min() and max() functions. Finally, we can assign a grade to each score based on predefined ranges. The solution code is as follows:"

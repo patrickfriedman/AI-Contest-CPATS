@@ -12,7 +12,7 @@ parser = argparse.ArgumentParser(description="Evaluation script for solutions")
 parser.add_argument(
     "--solution-path",
     type=str,
-    default="./solutions/20230726_174815.csv",
+    default="./solutions/",
     help="Path to the solution file",
 )
 args = parser.parse_args()

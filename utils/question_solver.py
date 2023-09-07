@@ -56,7 +56,6 @@ class QuestionSolver:
         logger.debug("ChatGPT response:\n" + str(response))
 
         try:
-            print(response)
             result = json.loads(response)
             logger.debug("Parsed result:\n" + str(result))
             print(response)

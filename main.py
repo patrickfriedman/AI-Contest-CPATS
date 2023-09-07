@@ -12,7 +12,7 @@ from utils.common_utils import (extract_folder_and_name_from_path,
                                 read_files_from_directory)
 from utils.log import logger
 from utils.question_solver import QuestionSolver
-from utils.data import vectorize_data, search_dataset
+from utils.data import search_dataset
 
 # Load .env file
 load_dotenv()
@@ -24,10 +24,9 @@ question_folder, question_filename = extract_folder_and_name_from_path(
 solution_folder, solution_filename = extract_folder_and_name_from_path(
     "Solution_FILE", "./solutions/solution.py"
 )
-data_folder, data_filename = extract_folder_and_name_from_path(
-    "Data_FILE", "./data/data.json"
+data_folder, embedding_filename = extract_folder_and_name_from_path(
+    "Data_FILE", "./data/data-embeddings.csv"
 )
-
 parser = argparse.ArgumentParser(
     description="A script that accepts a question path and a solution save path"
 )
@@ -58,9 +57,9 @@ if __name__ == "__main__":
     # Initialize an empty DataFrame with the columns 'Question file', 'code' and 'ChatGPT_thought'
     df = pd.DataFrame(columns=["Question file", "Solution code", "ChatGPT thought"])
 
-    # Vectorize current dataset
-    data_filepath = os.path.join(os.getcwd(), os.path.join(f"{data_folder}", f"{data_filename}"))
-    additional_df = vectorize_data(data_filepath)
+    # Retrieve embedded data from csv file
+    embedding_filepath = os.path.join(os.getcwd(), os.path.join(f"{data_folder}", f"{embedding_filename}"))
+    additional_df = pd.read_csv(embedding_filepath, sep=',', encoding='utf-8')
 
     try:
         # Get vectorized data for prompt enrichment

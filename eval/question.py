@@ -3,6 +3,7 @@ import os
 from datetime import datetime
 import shutil
 import time
+from main import *
 
 solution = ["test","test"]
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S") + ".csv"

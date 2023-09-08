@@ -14,6 +14,9 @@ from utils.log import logger
 from utils.question_solver import QuestionSolver
 from utils.data import vectorize_data, search_dataset
 
+from langchain.llms import OpenAI
+from langchain.callbacks import get_openai_callback
+
 # Load .env file
 load_dotenv()
 
@@ -55,6 +58,7 @@ if args.debug:
         handler.setLevel(logging.DEBUG)
 
 if __name__ == "__main__":
+
     # Initialize an empty DataFrame with the columns 'Question file', 'code' and 'ChatGPT_thought'
     df = pd.DataFrame(columns=["Question file", "Solution code", "ChatGPT thought"])
 
@@ -96,20 +100,22 @@ if __name__ == "__main__":
                     "output": similar_df['output'].iloc[0]
                 }
 
-            result = solver.solve(q[1], similar_dict)
-            logger.debug("result:\n" + str(result))
+            with get_openai_callback() as cb: # gets cost of api call
+                result = solver.solve(q[1], similar_dict)
+                logger.debug("result:\n" + str(result))
 
-            chatgpt_thought = result["thought"]
-            solution_code = result["solution_code"]
-            new_row = pd.DataFrame(
-                {
-                    "Question file": [q[0]],
-                    "Solution code": [solution_code],
-                    "ChatGPT thought": [chatgpt_thought],
-                }
-            )
+                chatgpt_thought = result["thought"]
+                solution_code = result["solution_code"]
+                new_row = pd.DataFrame(
+                    {
+                        "Question file": [q[0]],
+                        "Solution code": [solution_code],
+                        "ChatGPT thought": [chatgpt_thought],
+                    }
+                )
 
-            df = pd.concat([df, new_row], ignore_index=True)
+                df = pd.concat([df, new_row], ignore_index=True)
+                print("\n\n" + str(cb) + "\n\n")
 
         name = "sol"
 

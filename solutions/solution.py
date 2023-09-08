@@ -1,7 +1,7 @@
 def combine_strings(str1, str2):
-    return str1 + str2
+    combined_string = str1 + str2
+    print(combined_string)
 
-str1 = 'Goodbye'
+str1 = 'Goodbye '
 str2 = 'World'
-combined_string = combine_strings(str1, str2)
-print(combined_string
+combine_strings(str1, str2)

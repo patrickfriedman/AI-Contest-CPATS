@@ -111,12 +111,10 @@ if __name__ == "__main__":
 
             df = pd.concat([df, new_row], ignore_index=True)
 
-        # Get current timestamp
-        #timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        timestamp = "sol"
+        name = "sol"
 
         # Save DataFrame to CSV
-        solution_detail_save_path = f"{args.solution_save_path}/{timestamp}.csv"
+        solution_detail_save_path = f"{args.solution_save_path}/{name}.csv"
         df.to_csv(solution_detail_save_path, index=False)
         logger.info(f"Solution detail have been saved to {solution_detail_save_path}")
 

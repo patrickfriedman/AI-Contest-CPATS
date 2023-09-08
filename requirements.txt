@@ -1,6 +1,6 @@
-langchain==0.0.205
-pandas==1.4.2
-tqdm==4.65.0
+langchain
+pandas
+tqdm
 openai
 python-dotenv
 tiktoken
@@ -9,3 +9,4 @@ matplotlib
 plotly
 scipy 
 scikit-learn
+shutil

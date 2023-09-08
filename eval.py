@@ -46,9 +46,6 @@ for test_file in test_files:
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
 
-        # Insert the solution code into the module
-        #exec(solution_code, module.__dict__)
-
         # Run the tests
         suite = unittest.defaultTestLoader.loadTestsFromModule(module)
         unittest.TextTestRunner().run(suite)

@@ -1,1 +1,1 @@
-write a function that combines these two strings Goodbye and World
+write a function that combines these two strings Goodbye and World then print it to console

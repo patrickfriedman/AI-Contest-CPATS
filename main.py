@@ -112,7 +112,8 @@ if __name__ == "__main__":
             df = pd.concat([df, new_row], ignore_index=True)
 
         # Get current timestamp
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        #timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        timestamp = "sol"
 
         # Save DataFrame to CSV
         solution_detail_save_path = f"{args.solution_save_path}/{timestamp}.csv"

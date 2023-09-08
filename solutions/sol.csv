@@ -1,0 +1,8 @@
+Question file,Solution code,ChatGPT thought
+question.txt,"def combine_strings(str1, str2):
+    return str1 + str2
+
+str1 = 'Goodbye'
+str2 = 'World'
+combined_string = combine_strings(str1, str2)
+print(combined_string)","To combine two strings in Python, you can simply use the '+' operator. Here is a function that takes two strings as input and returns their combination."

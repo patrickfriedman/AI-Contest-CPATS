@@ -1,10 +1,10 @@
 Question file,Solution code,ChatGPT thought
 question.txt,"def solution(a: list[int]) -> int:
-    count_east = 0
-    count_passing = 0
+    east_cars = 0
+    passing_cars = 0
     for car in a:
         if car == 0:
-            count_east += 1
+            east_cars += 1
         else:
-            count_passing += count_east
-    return count_passing","To count the number of passing cars, we can iterate through the array and keep track of the number of cars traveling east. For each car traveling west, we can add the number of cars traveling east to the count. This way, we can count all the passing cars in a single pass through the array."
+            passing_cars += east_cars
+    return passing_cars","To count the number of passing cars, we can iterate through the array and keep track of the number of cars traveling east. For each car traveling west, we add the number of cars traveling east to the count of passing cars. The time complexity of this solution is O(N), where N is the length of the array."

@@ -1,0 +1,18 @@
+Question file,Solution code,ChatGPT thought
+question.txt,"def solution(teams, g):
+    avg = sum(teams) // g
+    groups = [avg] * g
+    remaining = sum(teams) % g
+    teams.sort(reverse=True)
+    i = 0
+
+    for team in teams:
+        groups[i] += team
+        i = (i + 1) % g
+        remaining -= 1
+
+        if remaining == 0:
+            break
+
+    groups.sort(reverse=True)
+    return groups","To divide the people into groups as evenly as possible, we can start by calculating the average number of people per group. Then, we can distribute the teams one by one to the groups until each group has at least the average number of people. After that, we can distribute the remaining teams one by one to the groups until all teams are assigned. Finally, we can sort the group sizes in descending order and return the result."

@@ -1,0 +1,12 @@
+Question file,Solution code,ChatGPT thought
+question.txt,"import urllib.parse
+
+def solution(source_url):
+    url_parts = urllib.parse.urlparse(source_url)
+    scheme = url_parts.scheme or 'http'
+    host = url_parts.hostname
+    port = url_parts.port or (80 if scheme == 'http' else 443)
+    path = url_parts.path
+    query = url_parts.query
+    return [host, str(port), path]
+","To extract the different parts of the URL, we can use the urllib.parse library in Python. We can parse the URL using the urlparse() function and then access the desired parts using the attributes of the returned object. We need to handle the default values for the scheme and port if they are not provided in the URL. Finally, we can return the extracted parts in the required order."

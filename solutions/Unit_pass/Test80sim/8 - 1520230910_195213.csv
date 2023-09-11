@@ -1,0 +1,6 @@
+Question file,Solution code,ChatGPT thought
+question.txt,"def solution(n:int) -> int:
+    product = 1
+    for i in range(1, n+1):
+        product = (product * i) % 10
+    return product","To calculate the last non-zero digit in N!, we can iterate through the numbers from 1 to N and multiply them together. Since we only need the last non-zero digit, we can keep track of the product modulo 10 at each step. This will ensure that we always have the last digit of the product. Finally, we return the last non-zero digit as the result."

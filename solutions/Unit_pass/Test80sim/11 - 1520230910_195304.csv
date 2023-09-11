@@ -1,0 +1,10 @@
+Question file,Solution code,ChatGPT thought
+question.txt,"def solution(a: list[int]) -> int:
+    east_cars = 0
+    passing_cars = 0
+    for car in a:
+        if car == 0:
+            east_cars += 1
+        else:
+            passing_cars += east_cars
+    return passing_cars","To count the number of passing cars, we can iterate through the array and keep track of the number of cars traveling east. Whenever we encounter a car traveling west, we can increment the count by the number of cars traveling east. Finally, we return the count."

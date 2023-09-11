@@ -1,0 +1,13 @@
+Question file,Solution code,ChatGPT thought
+question.txt,"def solution(inorder: str, postorder: str) -> str:
+    if not inorder:
+        return ''
+    root_val = postorder[-1]
+    root_idx = inorder.index(root_val)
+    left_inorder = inorder[:root_idx]
+    right_inorder = inorder[root_idx+1:]
+    left_postorder = postorder[:root_idx]
+    right_postorder = postorder[root_idx:-1]
+    left_preorder = solution(left_inorder, left_postorder)
+    right_preorder = solution(right_inorder, right_postorder)
+    return root_val + left_preorder + right_preorder","To solve this problem, we can use recursion. First, we find the root node of the binary tree by looking at the last element of the postorder traversal. Then, we find the index of the root node in the inorder traversal. With this index, we can split the inorder traversal into left and right subtrees. Similarly, we split the postorder traversal into left and right subtrees. We then recursively build the left and right subtrees by calling the solution function. Finally, we concatenate the root node with the preorder traversal of the left and right subtrees to get the final result."

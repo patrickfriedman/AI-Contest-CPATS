@@ -1,0 +1,11 @@
+Question file,Solution code,ChatGPT thought
+question.txt,"def solution(n: int, breed: str) -> int:
+    breed_count = {}
+    for b in breed.split():
+        breed_count[b] = breed_count.get(b, 0) + 1
+    total_delegations = 0
+    for i in range(n - 2):
+        for j in range(i + 2, n):
+            if breed[i] != breed[j]:
+                total_delegations += breed_count[breed[i]] * breed_count[breed[j]]
+    return total_delegations","To solve this problem, we can iterate through the list of breeds and count the number of cows of each breed. Then, for each possible interval of at least three cows, we can calculate the number of possible delegations using the count of cows of each breed. Finally, we sum up the number of possible delegations for all possible intervals and return the result."

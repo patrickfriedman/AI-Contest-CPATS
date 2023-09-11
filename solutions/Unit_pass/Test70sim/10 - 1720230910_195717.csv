@@ -1,0 +1,15 @@
+Question file,Solution code,ChatGPT thought
+question.txt,"def solution(s: str) -> int:
+    stack = []
+    opening = set(['(', '[', '{'])
+    closing = set([')', ']', '}'])
+    pairs = {')': '(', ']': '[', '}': '{'}
+
+    for char in s:
+        if char in opening:
+            stack.append(char)
+        elif char in closing:
+            if not stack or stack.pop() != pairs[char]:
+                return 0
+
+    return 1 if not stack else 0","To determine if a string is properly nested, we can use a stack data structure. We iterate through each character in the string and if it is an opening parenthesis, we push it onto the stack. If it is a closing parenthesis, we check if the top of the stack matches the closing parenthesis. If it does, we pop the top of the stack. After iterating through all the characters, if the stack is empty, then the string is properly nested. Otherwise, it is not."

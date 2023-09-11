@@ -1,0 +1,11 @@
+Question file,Solution code,ChatGPT thought
+question.txt,"def solution(s: str) -> str:
+    stack = []
+    seen = set()
+    for char in s:
+        if char not in seen:
+            while stack and char < stack[-1] and stack[-1] in s[i+1:]:
+                seen.remove(stack.pop())
+            stack.append(char)
+            seen.add(char)
+    return ''.join(stack[::-1])","To remove duplicate letters from the given string while preserving the relative order and ensuring lexicographic order, we can use a stack and a set. We iterate through the string and for each character, we check if it is already in the set. If it is not, we push it onto the stack and add it to the set. After iterating through all the characters, we construct the resulting string by popping characters from the stack. Since the stack is LIFO (last in, first out), the characters will be in reverse order. Therefore, we need to reverse the resulting string before returning it as the final output."

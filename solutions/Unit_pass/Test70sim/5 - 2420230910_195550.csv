@@ -1,0 +1,33 @@
+Question file,Solution code,ChatGPT thought
+question.txt,"def solution(equation: str) -> str:
+    # Split the equation into left and right sides
+    left_side, right_side = equation.split('=')
+    
+    # Parse the left side of the equation
+    left_atoms = {}
+    molecules = left_side.split('+')
+    for molecule in molecules:
+        count, atom = molecule.split()
+        count = int(count)
+        if atom in left_atoms:
+            left_atoms[atom] += count
+        else:
+            left_atoms[atom] = count
+    
+    # Parse the right side of the equation
+    right_atoms = {}
+    molecules = right_side.split('+')
+    for molecule in molecules:
+        count, atom = molecule.split()
+        count = int(count)
+        if atom in right_atoms:
+            right_atoms[atom] += count
+        else:
+            right_atoms[atom] = count
+    
+    # Compare the counts of each atom
+    if left_atoms == right_atoms:
+        return 'yes'
+    else:
+        return 'no'
+","To check if the equation is balanced, we need to compare the number of each atom on the left side of the equation with the number on the right side. We can do this by parsing the equation and keeping track of the count of each atom. If the counts match, the equation is balanced. Otherwise, it is not balanced."

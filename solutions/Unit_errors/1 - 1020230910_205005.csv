@@ -1,0 +1,11 @@
+Question file,Solution code,ChatGPT thought
+question.txt,"def solution(inorder: str, postorder: str) -> str:
+    if not inorder or not postorder:
+        return ''
+    root = postorder[-1]
+    root_index = inorder.index(root)
+    left_inorder = inorder[:root_index]
+    right_inorder = inorder[root_index+1:]
+    left_postorder = postorder[:len(left_inorder)]
+    right_postorder = postorder[len(left_inorder):-1]
+    return root + solution(left_inorder, left_postorder) + solution(right_inorder, right_postorder)","To solve this problem, we can use a recursive approach. The last element of the postorder traversal will always be the root of the binary tree. We can find the index of the root in the inorder traversal to determine the left and right subtrees. Then, we can recursively construct the left and right subtrees using the corresponding portions of the inorder and postorder traversals. Finally, we can concatenate the root, left subtree, and right subtree to get the preorder traversal."

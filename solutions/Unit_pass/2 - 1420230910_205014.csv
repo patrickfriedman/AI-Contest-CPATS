@@ -1,0 +1,22 @@
+Question file,Solution code,ChatGPT thought
+question.txt,"def solution(cards):
+    n = len(cards)
+    table = [[0] * n for _ in range(n)]
+
+    for gap in range(n):
+        for i in range(n - gap):
+            j = i + gap
+
+            x = 0
+            if (i + 2) <= j:
+                x = table[i + 2][j]
+            y = 0
+            if (i + 1) <= (j - 1):
+                y = table[i + 1][j - 1]
+            z = 0
+            if i <= (j - 2):
+                z = table[i][j - 2]
+
+            table[i][j] = max(cards[i] + min(x, y), cards[j] + min(y, z))
+
+    return table[0][-1]","To solve this problem, we can use a dynamic programming approach. We will create a 2D table to store the maximum possible total values for different subarrays of cards. We will start by filling in the table for subarrays of length 1, then for subarrays of length 2, and so on, until we reach the full array. For each subarray, we will consider two cases: choosing the first card or choosing the last card. We will compare the values obtained in these two cases and choose the maximum. Finally, the maximum possible total value will be stored in the top right corner of the table."

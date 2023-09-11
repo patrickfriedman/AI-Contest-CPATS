@@ -1,8 +1,12 @@
 Question file,Solution code,ChatGPT thought
-question.txt,"def combine_strings(str1, str2):
-    return str1 + str2
-
-str1 = 'Goodbye '
-str2 = 'World'
-result = combine_strings(str1, str2)
-print(result)","To combine two strings in Python, we can simply use the '+' operator. We define a function that takes two string arguments and returns their concatenation."
+question.txt,"def solution(a: list[int]) -> int:
+    east_cars = 0
+    passing_cars = 0
+    for car in a:
+        if car == 0:
+            east_cars += 1
+        else:
+            passing_cars += east_cars
+            if passing_cars > 1000000000:
+                return -1
+    return passing_cars","One approach to solve this problem is to iterate through the array and count the number of cars traveling to the east (0s). Then, for each car traveling to the west (1), we can increment the count of passing cars by the number of cars traveling to the east that we have encountered so far. This is because for each car traveling to the west, it can pass all the cars traveling to the east that have not been encountered yet. Finally, we return the count of passing cars."

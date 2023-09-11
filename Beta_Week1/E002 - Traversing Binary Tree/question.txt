@@ -1,0 +1,30 @@
+Problem Description:
+
+Given the inorder and postorder traversal results of a binary tree, write a function:
+
+```python3
+def solution(inorder: str, postorder: str) -> str:
+    pass
+```
+
+to output the preorder traversal result.
+
+Input:
+
+The input consists of two strings (lowercase characters, separated by space), each character in the string represents a node. The first string is the result of inorder traversal, and the second one is the result of postorder traversal.
+
+Example:
+
+Input:
+
+"bac", "bca"
+
+Output:
+
+The output is a string representing the result of the preorder traversal.
+
+Example:
+
+Output:
+
+"abc"

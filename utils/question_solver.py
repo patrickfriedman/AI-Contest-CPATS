@@ -54,13 +54,22 @@ class QuestionSolver:
         messages = [HumanMessage(content=input.to_string())]
         response = self.chatbot(messages).content
         logger.debug("ChatGPT response:\n" + str(response))
-
+    
         try:
+            n = 0
             result = json.loads(response)
             logger.debug("Parsed result:\n" + str(result))
             print(response)
         except Exception:
+            n = n + 1
+            print("Format Fail #" + str(n))
+
+            with open(f"./Unit_errors/Format Fail.txt" + str(n), "w") as text_file:
+                text_file.write("Exception: %s" % result)
+            # create txt for each format fail
+
             raise ValueError(
                 "ChatGPT's response is in wrong format, please try again or adjust the prompt.\n\n" + response + "\n\n"
             )
+        
         return result

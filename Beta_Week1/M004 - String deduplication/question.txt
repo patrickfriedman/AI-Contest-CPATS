@@ -1,0 +1,33 @@
+Problem Description:
+
+Given a string 's' that only contains lowercase letters, write a function:
+
+```python3
+def solution(s:str) -> str:
+    pass
+```
+
+to remove duplicate letters so that each letter appears only once. 
+Ensure the resulting string is lexicographically smallest. The relative order of the characters must be preserved.
+
+Input:
+
+A string 's'.
+
+Output:
+
+The resulting string after removing duplicates and ensuring lexicographic order.
+
+Example:
+
+Input:
+
+"bcabc"
+
+Output:
+
+"abc"
+
+Note:
+
+The input string will only contain lowercase letters. The relative order of the characters in the string should be preserved in the output. The output should be lexicographically smallest among all possible results.

@@ -8,12 +8,19 @@ import math
 
 solution = ["test","test"] # Remove later
 
+def testdir(path):
+    isExist = os.path.exists(path)
+    if not isExist:
+    # Create a new directory because it does not exist
+        os.makedirs(path)
+
 class TestBinaryGap(unittest.TestCase):
 
     def test_smalldataset(self):   # check to do per file/question
         try:
+            testdir("./solutions/Unit_pass/")
+            testdir("./solutions/Unit_errors/")
             # List all .txt folders in the question set directory
-            nf = 0
             np = 0
 
             for root, dirs, Qfiles in os.walk("./Beta_Week1"):
@@ -54,11 +61,10 @@ class TestBinaryGap(unittest.TestCase):
 
                         # Check if the exit status indicates an error (non-zero exit code)
                         if sol_status != 0:
-                            nf = nf + 1
-                            print("Runtime Fail #" + str(nf))
+                            print("Runtime Fail #" + str(np))
 
                             Fsrc_path = r"./solutions/sol.csv"
-                            Fdst_path = r"./solutions/Unit_errors/" + str(nf) + " - " + str(exTime) + timestamp
+                            Fdst_path = r"./solutions/Unit_errors/" + str(np) + " - " + str(exTime) + timestamp
                             shutil.copy(Fsrc_path, Fdst_path)
                             # add question and exception to each fail csv
   

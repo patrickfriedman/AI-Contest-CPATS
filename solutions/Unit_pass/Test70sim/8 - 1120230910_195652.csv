@@ -1,6 +1,0 @@
-Question file,Solution code,ChatGPT thought
-question.txt,"def solution(n:int) -> int:
-    if n < 5:
-        return 1
-    else:
-        return 4",

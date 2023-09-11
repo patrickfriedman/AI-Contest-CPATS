@@ -48,6 +48,13 @@ parser.add_argument(
     default=data_folder,
     help="Data set for prompt enrichment",
 )
+parser.add_argument(
+    "--data-file-name",
+    default=embedding_filename,
+    help="Data set file for prompt enrichment",
+)
+
+
 parser.add_argument("--debug", action="store_true", help="Set log level to DEBUG")
 args = parser.parse_args()
 
@@ -57,6 +64,8 @@ if args.debug:
         handler.setLevel(logging.DEBUG)
 
 if __name__ == "__main__":
+
+    embedding_filename = args.data_file_name
 
     # Initialize an empty DataFrame with the columns 'Question file', 'code' and 'ChatGPT_thought'
     df = pd.DataFrame(columns=["Question file", "Solution code", "ChatGPT thought"])

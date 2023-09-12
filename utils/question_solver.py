@@ -36,7 +36,7 @@ class QuestionSolver:
         prompt = PromptTemplate(
             template=self.prompt_template, input_variables=["program_requirement", "with_similar_solution"],
         )
-
+    
         if similar_solution['add_this_to_prompt'] == True:
             with_similar_solution = f"""
             Here is a similar instruction prompt and code snippet that is similar to the programming 

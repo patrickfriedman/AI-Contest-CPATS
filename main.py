@@ -27,7 +27,7 @@ question_folder, question_filename = extract_folder_and_name_from_path(
 solution_folder, solution_filename = extract_folder_and_name_from_path(
     "Solution_FILE", "./solutions/solution.py"
 )
-data_folder, embedding_filename = extract_folder_and_name_from_path(
+data_folder, test_filename = extract_folder_and_name_from_path(
     "Data_FILE", "./data/data-120k-embeddings.csv"
 )
 parser = argparse.ArgumentParser(
@@ -50,7 +50,7 @@ parser.add_argument(
 )
 parser.add_argument(
     "--data-file-name",
-    default=embedding_filename,
+    default="",
     help="Data set file for prompt enrichment",
 )
 
@@ -67,12 +67,10 @@ if __name__ == "__main__":
 
     embedding_filename = args.data_file_name
 
+    print(f"Embedding file name: {embedding_filename}")
+
     # Initialize an empty DataFrame with the columns 'Question file', 'code' and 'ChatGPT_thought'
     df = pd.DataFrame(columns=["Question file", "Solution code", "ChatGPT thought"])
-
-    # Retrieve embedded data from csv file
-    embedding_filepath = os.path.join(os.getcwd(), os.path.join(f"{data_folder}", f"{embedding_filename}"))
-    additional_df = pd.read_csv(embedding_filepath, sep=',', encoding='utf-8')
 
     try:
         # Get vectorized data for prompt enrichment
@@ -87,8 +85,6 @@ if __name__ == "__main__":
             solver = QuestionSolver()
             # Search dataset for most similar data with question
 
-            similar_df = search_dataset(additional_df, q[1])
-
             similar_dict = {
                 "add_this_to_prompt": False,
                 "similarities": "",
@@ -97,16 +93,23 @@ if __name__ == "__main__":
                 "output":  ""
             }
 
-            print(f"This is the similarity score: {similar_df['similarities'].iloc[0]}")
+            # Retrieve embedded data from csv file
+            if embedding_filename != "":
+                embedding_filepath = os.path.join(os.getcwd(), os.path.join(f"{data_folder}", f"{embedding_filename}"))
+                additional_df = pd.read_csv(embedding_filepath, sep=',', encoding='utf-8')
 
-            if similar_df['similarities'].iloc[0] >= 0.80:
-                similar_dict = {
-                    "add_this_to_prompt": True,
-                    "similarities": similar_df['similarities'].iloc[0],
-                    "instruction": similar_df['instruction'].iloc[0],
-                    "input": similar_df['input'].iloc[0],
-                    "output": similar_df['output'].iloc[0]
-                }
+                similar_df = search_dataset(additional_df, q[1])
+
+                print(f"This is the similarity score: {similar_df['similarities'].iloc[0]}")
+        
+                if similar_df['similarities'].iloc[0] >= 0.80:
+                    similar_dict = {
+                        "add_this_to_prompt": True,
+                        "similarities": similar_df['similarities'].iloc[0],
+                        "instruction": similar_df['instruction'].iloc[0],
+                        "input": similar_df['input'].iloc[0],
+                        "output": similar_df['output'].iloc[0]
+                    }
 
             with get_openai_callback() as cb: # gets cost of api call
                 result = solver.solve(q[1], similar_dict)

@@ -5,7 +5,7 @@ The execution time of the solution code must be less than 1 second.
 You will generate the code based on the problem description. 
 Input is the parameter that a function takes. 
 Output is what the function returns.
-Remeber to consider edge cases and exceptions. 
+Remember to consider edge cases and exceptions. 
 Here is the programming requirement you need to solve:
 
 {program_requirement}

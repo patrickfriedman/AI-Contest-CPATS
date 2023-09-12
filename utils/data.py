@@ -27,7 +27,7 @@ url = openai.api_base + "/openai/deployments?api-version=2022-12-01"
 r = requests.get(url, headers={"api-key": API_KEY})
 
 def get_embedding_with_delay(x):
-    time.sleep(5)  # Add a 5-second delay
+    #time.sleep(5)  # Add a 5-second delay
     return get_embedding(x, engine=DEPLOYMENT_NAME)
 
 def vectorize_data(data_filepath):     

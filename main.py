@@ -28,7 +28,7 @@ solution_folder, solution_filename = extract_folder_and_name_from_path(
     "Solution_FILE", "./solutions/solution.py"
 )
 data_folder, embedding_filename = extract_folder_and_name_from_path(
-    "Data_FILE", "./data/data-embeddings.csv"
+    "Data_FILE", "./data/data-120k-embeddings.csv"
 )
 parser = argparse.ArgumentParser(
     description="A script that accepts a question path and a solution save path"

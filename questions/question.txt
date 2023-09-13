@@ -1,42 +1,34 @@
-Given a non-empty array `A` of `N` integers (containing only 0s and/or 1s), the consecutive elements of array `A` represent consecutive cars on a road. Each element in array `A` represents a car traveling in a particular direction: 0 represents a car traveling east, and 1 represents a car traveling west.  
+## **Problem**  
   
+The United Cows of Farmer John (UCFJ) are preparing to send a delegation to the International bOvine olympIad (IOI). There are `N` cows participating in the delegation selection where `1≤N≤2*10^5`. Each cow, denoted by `i`, belongs to a certain breed `bi`.  
+  
+A delegation consists of a contiguous interval of at least three cows, denoted as `l...r` where `l` and `r` are integers satisfying `1≤l<r≤N` and `r−l≥2`. Three cows from the selected interval will be chosen as delegation leaders. The two outermost cows of the selected interval must be leaders. To avoid intra-breed conflict, each leader must be of a different breed from the rest of the delegation.  
+
 Write a function:
 
 ```python3
-def solution(a: list[int]) -> int:
+def solution(n: int, breed: str) -> int:
     pass
 ```
 
-to count the number of passing cars on the road. We consider a pair of cars `(P, Q)`, where `0 ≤ P < Q < N`, as passing when `P` is traveling to the east and `Q` is traveling to the west.  
+to help the UCFJ determine the number of possible delegations that can be sent to the IOI. Two delegations are considered different if they have different members or different leaders.  
   
-## Example  
-Consider the array `A` such that:  
+## **Input**  
   
-  A[0] = 0  
-  A[1] = 1  
-  A[2] = 0  
-  A[3] = 1  
-  A[4] = 1  
+The first input is an integer `N` representing the number of cows participating in the delegation selection.  
   
-We have five pairs of passing cars: (0, 1), (0, 3), (0, 4), (2, 3), (2, 4).  
+The second input is a string, it consist of integers `b1 b2 b3 … bN`, delimit by space, each within the range `[1, N]`, representing the breed of each cow.  
   
-The output for this input should be `5`.  
+## **Output**  
   
-## Input  
-The input is a non-empty array `A` consisting of `N` integers (containing only 0s and/or 1s).  
+Output a single integer representing the number of possible delegations.  
   
-## Output  
-The output is the number of passing cars.  
+## **Example**  
   
-## Example  
 **Input:**  
-
-```
-a = [0, 1, 0, 1, 1]  
-```
+  
+7, "1 2 3 4 3 2 5"
   
 **Output:**  
-
-```
-5  
-```
+  
+9   

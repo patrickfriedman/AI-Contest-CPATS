@@ -18,9 +18,9 @@ class TestBinaryGap(unittest.TestCase):
         try:
             testdir("./solutions/Unit_pass/")
             testdir("./solutions/Unit_errors/")
-            # List all .txt folders in the question set directory
             np = 0
 
+            # List all .txt folders in the question set directory
             for root, dirs, Qfiles in os.walk("./Beta_Week1"):
                 for Qfilename in Qfiles:
                     qPath = root
@@ -36,11 +36,11 @@ class TestBinaryGap(unittest.TestCase):
                         Qdst_path = "./questions/"
                         shutil.copy(Qsrc_path, Qdst_path)
                         
-                        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S") + ".csv"
+                        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
                         start_time = time.time()
 
                         main_status = os.system('python .\main.py --data-file-name data-120k-embeddings.csv') # add data set as a parameter
-                        dataset = "data-120k-embeddings.csv"
+                        dataset = "data-120k-embeddings"
 
                         end_time = time.time()
                         print("\n--- Question " + qPath + " in %s seconds ---\n" % (end_time - start_time))
@@ -75,9 +75,9 @@ class TestBinaryGap(unittest.TestCase):
         try:
             testdir("./solutions/Unit_pass/")
             testdir("./solutions/Unit_errors/")
-            # List all .txt folders in the question set directory
             np = 0
 
+            # List all .txt folders in the question set directory
             for root, dirs, Qfiles in os.walk("./Beta_Week1"):
                 for Qfilename in Qfiles:
                     qPath = root
@@ -93,7 +93,7 @@ class TestBinaryGap(unittest.TestCase):
                         Qdst_path = "./questions/"
                         shutil.copy(Qsrc_path, Qdst_path)
 
-                        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S") + ".csv"
+                        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
                         start_time = time.time()
 
                         main_status = os.system('python .\main.py') # add data set as a parameter

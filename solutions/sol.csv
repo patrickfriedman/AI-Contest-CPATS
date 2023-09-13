@@ -1,12 +1,19 @@
 Question file,Solution code,ChatGPT thought
-question.txt,"def solution(a: list[int]) -> int:
-    east_cars = 0
-    passing_cars = 0
+question.txt,"import urllib.parse
 
-    for car in a:
-        if car == 0:
-            east_cars += 1
-        else:
-            passing_cars += east_cars
-
-    return passing_cars","To count the number of passing cars, we can iterate through the array and keep track of the number of cars traveling east. For each car traveling west, we add the number of cars traveling east to the count of passing cars. The time complexity of this solution is O(N), where N is the length of the array."
+def solution(source_url):
+    parsed_url = urllib.parse.urlparse(source_url)
+    scheme = parsed_url.scheme
+    if not scheme:
+        scheme = 'http'
+    host = parsed_url.hostname
+    port = parsed_url.port
+    if not port:
+        if scheme == 'http':
+            port = 80
+        elif scheme == 'https':
+            port = 443
+    path = parsed_url.path
+    query = parsed_url.query
+    return [host, str(port), path]
+","To solve this problem, we can use the urlparse library in Python to parse the given URL and extract its components. We can then check if the scheme is provided and assign the default port accordingly. Finally, we return the host, port, path, and query parts as an array. The solution code will be simple and efficient, using only built-in Python libraries."

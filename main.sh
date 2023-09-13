@@ -4,4 +4,4 @@
 # Contestants should consider how to utilize this information themselves.
 evalmessage="${1:-""}"
 
-python main.py
+python3 main.py

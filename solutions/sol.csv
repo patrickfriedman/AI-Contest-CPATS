@@ -1,13 +1,11 @@
 Question file,Solution code,ChatGPT thought
-question.txt,"def solution(inorder: str, postorder: str) -> str:
-    if not inorder or not postorder:
-        return ''
-    root_val = postorder[-1]
-    root_index = inorder.index(root_val)
-    left_inorder = inorder[:root_index]
-    right_inorder = inorder[root_index+1:]
-    left_postorder = postorder[:root_index]
-    right_postorder = postorder[root_index:-1]
-    left_preorder = solution(left_inorder, left_postorder)
-    right_preorder = solution(right_inorder, right_postorder)
-    return root_val + left_preorder + right_preorder","To solve this problem, we can use a recursive approach. The last element in the postorder traversal will always be the root of the binary tree. We can find the index of this root in the inorder traversal and split the inorder and postorder traversals into left and right subtrees. We can then recursively build the left and right subtrees and attach them to the root. Finally, we can traverse the tree in preorder and return the result."
+question.txt,"def solution(cards: list[int]) -> int:
+    n = len(cards)
+    dp = [[0] * n for _ in range(n)]
+
+    for i in range(n-1, -1, -1):
+        dp[i][i] = cards[i]
+        for j in range(i+1, n):
+            dp[i][j] = max(cards[i] + min(dp[i+2][j], dp[i+1][j-1]), cards[j] + min(dp[i+1][j-1], dp[i][j-2]))
+
+    return dp[0][n-1]","To solve this problem, we can use dynamic programming. We will create a 2D array dp with dimensions n x n, where dp[i][j] represents the maximum total value we can win considering only the cards from index i to index j. The base case is when i = j, in which case dp[i][j] = cards[i]. For other cases, we have two options: either we choose the card at index i or the card at index j. If we choose the card at index i, our opponent will choose the best option from dp[i+1][j]. If we choose the card at index j, our opponent will choose the best option from dp[i][j-1]. We want to maximize our total value, so we choose the option that gives us the maximum total value. We can fill the dp array using a bottom-up approach, starting from smaller subproblems and gradually building up to the final solution. Finally, the maximum total value we can win will be stored in dp[0][n-1]."

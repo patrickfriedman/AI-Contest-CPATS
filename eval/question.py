@@ -14,12 +14,6 @@ def testdir(path):
 
 class TestBinaryGap(unittest.TestCase):
 
-    def run_main_script(self):
-        # This method contains the code for running the main.py script.
-        main_status = os.system('python .\main.py') # add data set as a parameter
-
-        return main_status
-
     def test_dataset(self):   # check to do per file/question
         try:
             testdir("./solutions/Unit_pass/")

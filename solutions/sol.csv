@@ -2,10 +2,11 @@ Question file,Solution code,ChatGPT thought
 question.txt,"def solution(cards: list[int]) -> int:
     n = len(cards)
     dp = [[0] * n for _ in range(n)]
-
-    for i in range(n-1, -1, -1):
+    for i in range(n):
         dp[i][i] = cards[i]
-        for j in range(i+1, n):
-            dp[i][j] = max(cards[i] + min(dp[i+2][j], dp[i+1][j-1]), cards[j] + min(dp[i+1][j-1], dp[i][j-2]))
-
-    return dp[0][n-1]","To solve this problem, we can use dynamic programming. We will create a 2D array dp with dimensions n x n, where dp[i][j] represents the maximum total value we can win considering only the cards from index i to index j. The base case is when i = j, in which case dp[i][j] = cards[i]. For other cases, we have two options: either we choose the card at index i or the card at index j. If we choose the card at index i, our opponent will choose the best option from dp[i+1][j]. If we choose the card at index j, our opponent will choose the best option from dp[i][j-1]. We want to maximize our total value, so we choose the option that gives us the maximum total value. We can fill the dp array using a bottom-up approach, starting from smaller subproblems and gradually building up to the final solution. Finally, the maximum total value we can win will be stored in dp[0][n-1]."
+    for length in range(2, n+1):
+        for i in range(n-length+1):
+            j = i + length - 1
+n            dp[i][j] = max(cards[i] + min(dp[i+2][j], dp[i+1][j-1]),
+                          cards[j] + min(dp[i][j-2], dp[i+1][j-1]))
+    return dp[0][n-1]","To solve this problem, we can use dynamic programming. We can create a 2D table to store the maximum total value we can win for each subarray of cards. We start with subarrays of length 1 and gradually build up to the whole array. For each subarray, we consider two possibilities: either choose the first card or choose the last card. We update the table with the maximum value we can obtain by choosing the best option. Finally, the maximum total value we can win for the whole array is stored in the top-right cell of the table."

@@ -4,4 +4,4 @@
 # Contestants should consider how to utilize this information themselves.
 evalmessage="${1:-""}"
 
-python3 main.py
+python3 main.py --question-path $Question_FILE --solution-save-path $Solution_FILE --message $evalmessage

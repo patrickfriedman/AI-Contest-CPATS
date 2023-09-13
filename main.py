@@ -53,7 +53,10 @@ parser.add_argument(
     default="",
     help="Data set file for prompt enrichment",
 )
-
+parser.add_argument(
+    "--message",
+    help="Will be one of the following: SyntaxError or test_cases_count: 70, wrong_answer_count: 0, time_limit_count: 0.",
+)
 
 parser.add_argument("--debug", action="store_true", help="Set log level to DEBUG")
 args = parser.parse_args()

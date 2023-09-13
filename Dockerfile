@@ -13,5 +13,10 @@ RUN pip install -r requirements.txt
 # Make script executable
 RUN chmod +x main.sh
 
+# Define environment variables
+ENV Question_FILE=/app/questions
+ENV Solution_FILE=/app/solutions
+ENV evalmessage="YourMessageHere"
+
 # Run script
-CMD ["./main.sh"]
+RUN bash main.sh

@@ -1,42 +1,30 @@
-Given a non-empty array `A` of `N` integers (containing only 0s and/or 1s), the consecutive elements of array `A` represent consecutive cars on a road. Each element in array `A` represents a car traveling in a particular direction: 0 represents a car traveling east, and 1 represents a car traveling west.  
-  
-Write a function:
+Problem Description:
+
+Given the inorder and postorder traversal results of a binary tree, write a function:
 
 ```python3
-def solution(a: list[int]) -> int:
+def solution(inorder: str, postorder: str) -> str:
     pass
 ```
 
-to count the number of passing cars on the road. We consider a pair of cars `(P, Q)`, where `0 ≤ P < Q < N`, as passing when `P` is traveling to the east and `Q` is traveling to the west.  
-  
-## Example  
-Consider the array `A` such that:  
-  
-  A[0] = 0  
-  A[1] = 1  
-  A[2] = 0  
-  A[3] = 1  
-  A[4] = 1  
-  
-We have five pairs of passing cars: (0, 1), (0, 3), (0, 4), (2, 3), (2, 4).  
-  
-The output for this input should be `5`.  
-  
-## Input  
-The input is a non-empty array `A` consisting of `N` integers (containing only 0s and/or 1s).  
-  
-## Output  
-The output is the number of passing cars.  
-  
-## Example  
-**Input:**  
+to output the preorder traversal result.
 
-```
-a = [0, 1, 0, 1, 1]  
-```
-  
-**Output:**  
+Input:
 
-```
-5  
-```
+The input consists of two strings (lowercase characters, separated by space), each character in the string represents a node. The first string is the result of inorder traversal, and the second one is the result of postorder traversal.
+
+Example:
+
+Input:
+
+"bac", "bca"
+
+Output:
+
+The output is a string representing the result of the preorder traversal.
+
+Example:
+
+Output:
+
+"abc"

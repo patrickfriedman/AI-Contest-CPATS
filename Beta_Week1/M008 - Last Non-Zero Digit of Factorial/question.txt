@@ -1,0 +1,18 @@
+Problem Description:
+
+The factorial of N, written as "N!", represents the product of all positive integers less than or equal to N. Please write a function:
+
+```python3
+def solution(n:int) -> int:
+    pass
+```
+
+to calculate the last non-zero digit in N!.
+
+Input:
+
+The input only has one positive integer N (1 <= N <= 4220).
+
+Output:
+
+The output is an integer, representing the last non-zero digit in the result of "N!".

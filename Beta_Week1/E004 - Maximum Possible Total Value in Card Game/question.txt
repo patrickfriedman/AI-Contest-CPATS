@@ -1,0 +1,34 @@
+Problem Description:
+
+Consider a row of n cards with values V1, V2, ..., Vn, where n is an even number. We play a game in turns with an opponent. In each turn, a player can only choose the first or the last card from the row, gain the value of that card, and permanently remove it from the row. Assume that we move first, write a function:
+
+```python3
+def solution(cards: list[int]) -> int:
+    pass
+```
+
+to calculate the maximum possible total value we can win.
+
+Note: The opponent is as smart as we are.
+
+Let's understand this problem with an example:
+
+8, 15, 3, 7 : The user collects the maximum value of 22 (7 + 15)
+
+Input:
+
+An array of n elements, each element representing a card.
+
+Input Example:
+
+[5, 3, 7, 10]
+
+Output:
+
+The maximum total value we can obtain.
+
+Output Example:
+
+15
+
+The total 15 is obtained by taking cards 10 and 5.

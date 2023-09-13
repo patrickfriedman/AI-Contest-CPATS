@@ -1,0 +1,46 @@
+Problem Description:
+
+A URL consists of the following parts: scheme://host:port/path?query#fragment:
+
+scheme: Communication protocol, common ones are 'http', 'ftp', 'maito', etc. For this problem, we are only considering 'http' and 'https'. If not provided, 'http' is the default scheme.
+
+host: Host, which is the server (computer) Domain Name System (DNS) hostname or IP address.
+
+port: Port number, an integer, optional. If omitted, the default port of the scheme is used. For example, the default port for 'http' is 80 and for 'https' is 443.
+
+path: Path, a string separated by zero or more "/" symbols, generally used to represent a directory or file address on the host.
+
+query: Query, optional, used to pass parameters to dynamic web pages (such as web pages created with CGI, ISAPI, PHP/JSP/ASP/ASP.NET, etc.). There may be multiple parameters, separated by "&", and each parameter name and value are separated by "=".
+
+fragment: Fragment, a string, used to specify a fragment in the network resource. For example, if there are multiple definitions in a webpage, the fragment can be used to directly locate a specific definition. (Also known as an anchor point)
+
+Please write a function:
+
+```python3
+def solution(source_url:str) -> list[str]:
+    pass
+```
+
+to output the host, port, path, and query parts of a given URL as per the requirements.
+
+Input:
+
+A string that conforms to the URL standard.
+
+Output:
+
+The output should be an array of string, sort in order by host, port, path, and query.
+
+Example:
+
+Input:
+
+https://10.10.10.10/my/test/path2
+
+Output:
+
+["10.10.10.10", "443", "/my/test/path2"]
+
+Note:
+
+The task is to parse the given URL and extract its 'host', 'port', 'path', and 'query' parts. The 'scheme' determines the default 'port' if it is not explicitly provided in the URL. The 'query' part is optional and could be blank.

@@ -1,0 +1,30 @@
+Problem Description:
+
+In a chemical equation such as 2H2+O2=2H2O, the sections separated by the plus sign and the equal sign represent molecules. Molecules are composed of several atoms, and the subscript of the atomic symbol indicates the number of atoms in the molecule. The number preceding the molecule in the equation represents the quantity of the molecule. The equation is considered balanced when the number of each atom on the left side of the equation is equal to that on the right side.
+
+Note that an atomic symbol can be a single uppercase character (for example, H) or an uppercase character followed by a lowercase character (for example, Na).
+
+Write a function:
+
+```python3
+def solution(equation: str) -> str:
+    pass
+```
+
+to check if the equation is balanced. If the equation is balanced, output "yes"; otherwise, output "no".
+
+Input:
+
+The input is a string representing a chemical equation.
+
+Input Example:
+
+"2H2+O2=2H2O"
+
+Output:
+
+The output is a string that determines whether the left and right sides of the equation are balanced. The answer is "yes" or "no".
+
+Output Example:
+
+"yes"

@@ -1,0 +1,34 @@
+## **Problem**  
+  
+The United Cows of Farmer John (UCFJ) are preparing to send a delegation to the International bOvine olympIad (IOI). There are `N` cows participating in the delegation selection where `1≤N≤2*10^5`. Each cow, denoted by `i`, belongs to a certain breed `bi`.  
+  
+A delegation consists of a contiguous interval of at least three cows, denoted as `l...r` where `l` and `r` are integers satisfying `1≤l<r≤N` and `r−l≥2`. Three cows from the selected interval will be chosen as delegation leaders. The two outermost cows of the selected interval must be leaders. To avoid intra-breed conflict, each leader must be of a different breed from the rest of the delegation.  
+
+Write a function:
+
+```python3
+def solution(n: int, breed: str) -> int:
+    pass
+```
+
+to help the UCFJ determine the number of possible delegations that can be sent to the IOI. Two delegations are considered different if they have different members or different leaders.  
+  
+## **Input**  
+  
+The first input is an integer `N` representing the number of cows participating in the delegation selection.  
+  
+The second input is a string, it consist of integers `b1 b2 b3 … bN`, delimit by space, each within the range `[1, N]`, representing the breed of each cow.  
+  
+## **Output**  
+  
+Output a single integer representing the number of possible delegations.  
+  
+## **Example**  
+  
+**Input:**  
+  
+7, "1 2 3 4 3 2 5"
+  
+**Output:**  
+  
+9   

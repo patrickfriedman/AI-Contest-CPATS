@@ -1,0 +1,54 @@
+## Problem Statement  
+  
+Given a string `S` consisting of `N` characters (1 <= N <= 200,000) which includes multiple types of parentheses, write a function:
+
+```python3
+def solution(s:str) -> int:
+    pass
+```
+
+to determine whether it is properly nested.   
+  
+A string is considered to be properly nested if any of the following conditions is true:  
+  
+- `S` is empty  
+- `S` has the form "(U)" or "[U]" or "{U}", where `U` is a properly nested string  
+- `S` has the form "VW", where `V` and `W` are properly nested strings  
+  
+## Inputs  
+  
+The input will be a string `S` consisting of `N` characters.  
+  
+## Outputs  
+  
+The output should be 1 or 0, indicating whether the string is properly nested or not.  
+  
+## Example  
+  
+### Example 1:  
+  
+**Input:**  
+
+```
+s = "{[()()]}"
+```
+  
+**Output:**  
+
+```
+1  
+```
+  
+### Example 2:  
+  
+**Input:**  
+
+```
+s = "{[)]}"
+```
+
+**Output:**  
+
+```
+0  
+```

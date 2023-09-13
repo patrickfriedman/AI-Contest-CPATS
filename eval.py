@@ -12,10 +12,11 @@ parser = argparse.ArgumentParser(description="Evaluation script for solutions")
 parser.add_argument(
     "--solution-path",
     type=str,
-    default="./solutions/20230726_174815.csv",
+    default="./solutions/sol.csv",
     help="Path to the solution file",
 )
 args = parser.parse_args()
+print(args)
 
 # Read the contents of solutions.csv
 df = pd.read_csv(args.solution_path)
@@ -37,16 +38,17 @@ for test_file in test_files:
         logger.warning(f"No solution found for {test_file}")
         continue
 
-    # Create a new module spec and module
-    spec = importlib.util.spec_from_file_location(
-        test_file, os.path.join("eval", test_file)
-    )
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+    try:
+        # Create a new module spec and module
+        spec = importlib.util.spec_from_file_location(
+            test_file, os.path.join("eval", test_file)
+        )
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
 
-    # Insert the solution code into the module
-    exec(solution_code, module.__dict__)
-
-    # Run the tests
-    suite = unittest.defaultTestLoader.loadTestsFromModule(module)
-    unittest.TextTestRunner().run(suite)
+        # Run the tests
+        suite = unittest.defaultTestLoader.loadTestsFromModule(module)
+        unittest.TextTestRunner().run(suite)
+        
+    except Exception as e:
+        logger.error(f"An error occurred while processing {test_file}: {str(e)}")

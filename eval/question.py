@@ -1,74 +1,135 @@
 import unittest
+import os
+from datetime import datetime
+import shutil
+import time
+from utils.common_utils import read_files_from_directory
+import math
 
-
-# Fake, just for pass IDE
-def solution():
-    pass
-
+def testdir(path):
+    isExist = os.path.exists(path)
+    if not isExist:
+    # Create a new directory because it does not exist
+        os.makedirs(path)
 
 class TestBinaryGap(unittest.TestCase):
-    MAXINT = 2147483647  # The largest input we need worry about.
 
-    def test_examples(self):
-        self.assertEqual(solution(9), 2)
-        self.assertEqual(solution(529), 4)
-        self.assertEqual(solution(20), 1)
-        self.assertEqual(solution(15), 0)
-        self.assertEqual(solution(32), 0)
+    def run_main_script(self):
+        # This method contains the code for running the main.py script.
+        main_status = os.system('python .\main.py') # add data set as a parameter
 
-    def test_example1(self):
-        self.assertEqual(5, solution(1041))
+        return main_status
 
-    def test_example2(self):
-        self.assertEqual(0, solution(15))
+    def test_dataset(self):   # check to do per file/question
+        try:
+            testdir("./solutions/Unit_pass/")
+            testdir("./solutions/Unit_errors/")
+            # List all .txt folders in the question set directory
+            np = 0
 
-    def test_extremes(self):
-        self.assertEqual(0, solution(1))
-        self.assertEqual(1, solution(5))
-        self.assertEqual(0, solution(self.MAXINT))
+            for root, dirs, Qfiles in os.walk("./Beta_Week1"):
+                for Qfilename in Qfiles:
+                    qPath = root
+                    print(qPath)
 
-    def test_trailing_zeros(self):
-        self.assertEqual(solution(6), 0)
-        self.assertEqual(solution(328), 2)
+                    # Call the function and provide the directory path as an argument
+                    file_contents = read_files_from_directory(qPath)
 
-    def test_simple1(self):
-        self.assertEqual(solution(9), 2)
-        self.assertEqual(solution(11), 1)
-        self.assertEqual(solution(32), 0)
+                    # Iterate through the list of tuples and print the filename and content
+                    for filename, content in file_contents:
+                        # Copy question file to working dir
+                        Qsrc_path = qPath + "/" + filename
+                        Qdst_path = "./questions/"
+                        shutil.copy(Qsrc_path, Qdst_path)
+                        
+                        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S") + ".csv"
+                        start_time = time.time()
 
-    def test_simple2(self):
-        self.assertEqual(solution(19), 2)
-        self.assertEqual(solution(42), 1)
+                        main_status = os.system('python .\main.py --data-file-name data-120k-embeddings.csv') # add data set as a parameter
+                        dataset = "data-120k-embeddings.csv"
 
-    def test_simple3(self):
-        self.assertEqual(solution(1162), 3)
-        self.assertEqual(solution(5), 1)
+                        end_time = time.time()
+                        print("\n--- Question " + qPath + " in %s seconds ---\n" % (end_time - start_time))
+                        exTime = math.ceil(end_time - start_time)
 
-    def test_medium1(self):
-        self.assertEqual(solution(51712), 2)
-        self.assertEqual(solution(20), 1)
+                        #print("Filename:", str(file_contents))
+                        #print("Content: " + content)
+                        print("-" * 20)  # Add a separator line for clarity
 
-    def test_medium2(self):
-        self.assertEqual(solution(561892), 3)
-        self.assertEqual(solution(9), 2)
+                        if main_status == 0:
+                            np = np + 1
+                            print("Success #" + str(np))
 
-    def test_medium3(self):
-        self.assertEqual(solution(66561), 9)
+                            src_path = r"./solutions/sol.csv"
+                            Pdst_path = r"./solutions/Unit_pass/" + str(np) + " - " + dataset + timestamp + " - " + str(exTime)
+                            shutil.copy(src_path, Pdst_path)
 
-    def test_large1(self):
-        self.assertEqual(solution(6291457), 20)
+                        sol_status = os.system('python .\solutions\solution.py')
 
-    def test_large2(self):
-        self.assertEqual(solution(74901729), 4)
+                        # Check if the exit status indicates an error (non-zero exit code)
+                        if sol_status != 0:
+                            print("Runtime Fail #" + str(np))
 
-    def test_large3(self):
-        self.assertEqual(solution(805306369), 27)
+                            Fdst_path = r"./solutions/Unit_errors/" + str(np) + " - " + dataset + timestamp + " - " + str(exTime)
+                            shutil.copy(src_path, Fdst_path)
+                            # add question and exception to each fail csv
+  
+        except Exception as e:
+            self.fail('Exception raised: {}'.format(e))
 
-    def test_large4(self):
-        self.assertEqual(solution(1376796946), 5)
+    def test_nodataset(self):
+        try:
+            testdir("./solutions/Unit_pass/")
+            testdir("./solutions/Unit_errors/")
+            # List all .txt folders in the question set directory
+            np = 0
 
-    def test_large5(self):
-        self.assertEqual(solution(1073741825), 29)
+            for root, dirs, Qfiles in os.walk("./Beta_Week1"):
+                for Qfilename in Qfiles:
+                    qPath = root
+                    print(qPath)
 
-    def test_large6(self):
-        self.assertEqual(solution(1610612737), 28)
+                    # Call the function and provide the directory path as an argument
+                    file_contents = read_files_from_directory(qPath)
+
+                    # Iterate through the list of tuples and print the filename and content
+                    for filename, content in file_contents:
+                        # Copy question file to working dir
+                        Qsrc_path = qPath + "/" + filename
+                        Qdst_path = "./questions/"
+                        shutil.copy(Qsrc_path, Qdst_path)
+
+                        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S") + ".csv"
+                        start_time = time.time()
+
+                        main_status = os.system('python .\main.py') # add data set as a parameter
+                        dataset = "NA"
+                        
+                        end_time = time.time()
+                        print("\n--- Question " + qPath + " in %s seconds ---\n" % (end_time - start_time))
+                        exTime = math.ceil(end_time - start_time)
+
+                        #print("Filename:", str(file_contents))
+                        #print("Content: " + content)
+                        print("-" * 20)  # Add a separator line for clarity
+
+                        if main_status == 0:
+                            np = np + 1
+                            print("Success #" + str(np))
+
+                            src_path = r"./solutions/sol.csv"
+                            Pdst_path = r"./solutions/Unit_pass/" + str(np) + " - " + dataset + timestamp + " - " + str(exTime)
+                            shutil.copy(src_path, Pdst_path)
+
+                        sol_status = os.system('python .\solutions\solution.py')
+
+                        # Check if the exit status indicates an error (non-zero exit code)
+                        if sol_status != 0:
+                            print("Runtime Fail #" + str(np))
+
+                            Fdst_path = r"./solutions/Unit_errors/" + str(np) + " - " + dataset + timestamp + " - " + str(exTime)
+                            shutil.copy(src_path, Fdst_path)
+                            # add question and exception to each fail csv
+  
+        except Exception as e:
+            self.fail('Exception raised: {}'.format(e))

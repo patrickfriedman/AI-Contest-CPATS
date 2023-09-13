@@ -60,9 +60,9 @@ class TestBinaryGap(unittest.TestCase):
                             np = np + 1
                             print("Success #" + str(np))
 
-                            Psrc_path = r"./solutions/sol.csv"
+                            src_path = r"./solutions/sol.csv"
                             Pdst_path = r"./solutions/Unit_pass/" + str(np) + " - " + dataset + timestamp + " - " + str(exTime)
-                            shutil.copy(Psrc_path, Pdst_path)
+                            shutil.copy(src_path, Pdst_path)
 
                         sol_status = os.system('python .\solutions\solution.py')
 
@@ -70,9 +70,8 @@ class TestBinaryGap(unittest.TestCase):
                         if sol_status != 0:
                             print("Runtime Fail #" + str(np))
 
-                            Fsrc_path = r"./solutions/sol.csv"
                             Fdst_path = r"./solutions/Unit_errors/" + str(np) + " - " + dataset + timestamp + " - " + str(exTime)
-                            shutil.copy(Fsrc_path, Fdst_path)
+                            shutil.copy(src_path, Fdst_path)
                             # add question and exception to each fail csv
   
         except Exception as e:
@@ -118,9 +117,9 @@ class TestBinaryGap(unittest.TestCase):
                             np = np + 1
                             print("Success #" + str(np))
 
-                            Psrc_path = r"./solutions/sol.csv"
+                            src_path = r"./solutions/sol.csv"
                             Pdst_path = r"./solutions/Unit_pass/" + str(np) + " - " + dataset + timestamp + " - " + str(exTime)
-                            shutil.copy(Psrc_path, Pdst_path)
+                            shutil.copy(src_path, Pdst_path)
 
                         sol_status = os.system('python .\solutions\solution.py')
 
@@ -128,9 +127,8 @@ class TestBinaryGap(unittest.TestCase):
                         if sol_status != 0:
                             print("Runtime Fail #" + str(np))
 
-                            Fsrc_path = r"./solutions/sol.csv"
                             Fdst_path = r"./solutions/Unit_errors/" + str(np) + " - " + dataset + timestamp + " - " + str(exTime)
-                            shutil.copy(Fsrc_path, Fdst_path)
+                            shutil.copy(src_path, Fdst_path)
                             # add question and exception to each fail csv
   
         except Exception as e:

@@ -44,16 +44,25 @@ parser.add_argument(
     help="The path to save the solution",
 )
 parser.add_argument(
-    "--data-save-path",
-    default=data_folder,
-    help="Data set for prompt enrichment",
+    "--input",
+    default="question.txt",
+    help="The path to the questions (folder)",
 )
+parser.add_argument(
+    "--output",
+    default="solution.py",
+    help="The path to save the solution",
+)
+
 parser.add_argument(
     "--data-file-name",
     default="",
     help="Data set file for prompt enrichment",
 )
-
+parser.add_argument(
+    "--message",
+    help="Will be one of the following: SyntaxError or test_cases_count: 70, wrong_answer_count: 0, time_limit_count: 0.",
+)
 
 parser.add_argument("--debug", action="store_true", help="Set log level to DEBUG")
 args = parser.parse_args()
@@ -128,14 +137,16 @@ if __name__ == "__main__":
                 df = pd.concat([df, new_row], ignore_index=True)
                 print("\n\n" + str(cb) + "\n\n")
 
-        name = "sol"
+        # Get current timestamp
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
         # Save DataFrame to CSV
-        solution_detail_save_path = f"{args.solution_save_path}/{name}.csv"
+        solution_detail_save_path = f"{args.solution_save_path}/{timestamp}.csv"
+        
         df.to_csv(solution_detail_save_path, index=False)
         logger.info(f"Solution detail have been saved to {solution_detail_save_path}")
 
-        solution_save_path = f"{args.solution_save_path}/{solution_filename}"
+        solution_save_path = f"{args.solution_save_path}/{args.output}"
         with open(solution_save_path, "w") as f:
             f.write(df.loc[0, "Solution code"])
             logger.info(f"Solution file have been saved to {solution_save_path}")

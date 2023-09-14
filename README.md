@@ -7,4 +7,5 @@ docker run --mount type=bind,source="%cd%\questions",target=/app/questions --mou
 %cd% - can be the location of any question
 
 The game server will execute: (aka do it in the interactive bash console after run)
+
 bash ./main.sh "evalmessage"
